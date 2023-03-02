@@ -16,6 +16,18 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 
-@login_required()
+@login_required
 def home(request):
     return render(request, 'home.html')
+
+
+@login_required
+def add_product(request):
+    return render(request, 'add-product.html')
+
+
+
+
+
+
+# password=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
