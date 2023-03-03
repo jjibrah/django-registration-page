@@ -35,4 +35,46 @@ def add_product(request):
         return redirect('add-product')
     return render(request, 'add-product.html')
 
+
+@login_required()
+def view_products(request):
+    # select all the product from the database
+    products = Products.objects.all()
+    # Render the templates with products
+    return render(request, 'products.html', {'products': products})
+
+
+@login_required()
+def delete_product(request, id):
+    # select the product you need to delete
+    product = Products.objects.get(id=id)
+    # finally delete the product
+    product.delete()
+    # Redirect back to product page with a success message
+    messages.success(request, 'Product deleted successfully')
+    return redirect('products')
+
+
+@login_required()
+def update_product(request, id):
+    # select the product to be updated
+    product = Products.objects.get(id=id)
+    # check if the form has any submitted record to receive them
+    if request.method == "POST":
+        updated_name = request.POST.get('jina')
+        updated_quantity = request.POST.get('kiasi')
+        updated_price = request.POST.get('bei')
+
+        # Update the selected product above with the received data
+        product.prod_name = updated_name
+        product.prod_quantity = updated_quantity
+        product.prod_price = updated_price
+
+        # Return the upload data back to the database
+        product.save()
+
+        # Redirect back to the product page with a success message
+        messages.success(request, 'Product Updated successfully')
+        return redirect('products')
+    return render(request, 'update-product.html', {'product':product})
 # password=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
