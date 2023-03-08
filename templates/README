@@ -1,0 +1,17 @@
+Mpesa imports and variables (python codes)
+________________________________________
+# Start of mpesa related imports
+from __future__ import unicode_literals
+from django_daraja.mpesa import utils
+from django.http import HttpResponse, JsonResponse
+from django.views.generic import View
+from django_daraja.mpesa.core import MpesaClient
+from decouple import config
+from datetime import datetime
+# End of mpesa related imports
+
+# Start of Mpesa instances and variables
+cl = MpesaClient
+stk_push_callback_url = ""
+b2c_callback_url = ""
+# End of Mpesa instances and variables
