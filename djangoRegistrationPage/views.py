@@ -113,7 +113,7 @@ def payment(request, id):
         amount = request.POST.get('bei')
         amount = int(amount)
         # proceed with the payment by launching mpesa ST
-        account_ref = 'WANYAMA001'
+        account_ref = 'JJIBRAH'
         transaction_description = 'Payment for a product'
         call_back_url = stk_push_callback_url
         stk = cl.stk_push(phone_number, amount, account_ref,
@@ -123,4 +123,4 @@ def payment(request, id):
         return JsonResponse(mpesa_response, safe=False)
     return render(request, 'payment.html', {'product': product})
 
-# password=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
+# password=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 (new)

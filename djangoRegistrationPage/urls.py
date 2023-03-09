@@ -31,4 +31,4 @@ urlpatterns = [
     path('pay/<id>', general_views.payment, name='pay-via-mpesa')
 
 ]
-# password=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
+# password=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
